@@ -14,12 +14,21 @@ def compras():
 def mercados():
     return render_template('mercados.html')
 
+@app.route('/teste-img')
+def img():
+    return render_template('teste-img.html')
+
+
+# tratamento de exceções
+
 @app.route('/gastos',defaults={'mes':'janeiro','gasto':0})
 @app.route('/gastos/<mes>',defaults={'gasto':0})
 @app.route('/gastos/<int:gasto>',defaults={'mes':'janeiro'})
 @app.route('/gastos/<mes>/<int:gasto>')
 def gastos(mes,gasto):
     return render_template('gastos.html',mes=mes,gasto=gasto)
+
+#Definindo um tipo específico de dado que a rota irá aceitar
 
 @app.route('/dobro/<int:n>')
 def dobro(n):
