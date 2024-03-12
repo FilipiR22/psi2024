@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from defs import *
 
 app = Flask(__name__)
 @app.route('/')
@@ -15,8 +16,8 @@ def mercados():
 
 @app.route('/gastos',defaults={'mes':'janeiro','gasto':0})
 @app.route('/gastos/<mes>',defaults={'gasto':0})
-@app.route('/gastos/<gasto>',defaults={'mes':'janeiro'})
-@app.route('/gastos/<mes>/<gasto>')
+@app.route('/gastos/<int:gasto>',defaults={'mes':'janeiro'})
+@app.route('/gastos/<mes>/<int:gasto>')
 def gastos(mes,gasto):
     return render_template('gastos.html',mes=mes,gasto=gasto)
 
