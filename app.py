@@ -14,10 +14,6 @@ def compras():
 def mercados():
     return render_template('mercados.html')
 
-@app.route('/teste-img')
-def img():
-    return render_template('teste-img.html')
-
 
 # tratamento de exceções
 
@@ -34,6 +30,10 @@ def gastos(mes,gasto):
 def dobro(n):
     resultado = n*2
     return render_template('/dobro.html',n=n,resultado=resultado)
+
+@app.route('/imagem-dinamica/<name>')
+def img(name):
+    return render_template('/imagem-dinamica.html',image_name=name)
 
 
 if __name__ == '__main__':
